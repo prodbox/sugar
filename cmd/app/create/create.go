@@ -2,8 +2,7 @@ package create
 
 import (
 	"fmt"
-	"path"
-	"runtime"
+	"github.com/prodbox/sugar/os/upath"
 
 	"github.com/urfave/cli/v2"
 )
@@ -22,7 +21,6 @@ func Before(ctx *cli.Context) error {
 }
 
 func Action(ctx *cli.Context) error {
-	_, currentFilePath, _, _ := runtime.Caller(0)
-	fmt.Println(path.Dir(currentFilePath))
+	fmt.Println(upath.ExecutableSourceRoot())
 	return nil
 }
