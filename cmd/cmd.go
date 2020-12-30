@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"log"
+
 	"github.com/prodbox/sugar/cmd/app"
 	"github.com/prodbox/sugar/cmd/app/create"
 )
@@ -11,5 +13,7 @@ func init() {
 }
 
 func Execute() {
-	app.Execute()
+	if err := app.Execute(); err != nil {
+		log.Println(err)
+	}
 }

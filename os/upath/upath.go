@@ -1,7 +1,10 @@
+// +build !windows
+
 package upath
 
 import (
 	"os"
+	"syscall"
 )
 
 // IsExist
@@ -26,4 +29,9 @@ func Mkdir(path string) error {
 		return err
 	}
 	return nil
+}
+
+// IsWritable
+func IsWritable(path string) bool {
+	return syscall.Access(path, syscall.O_RDWR) == nil
 }
