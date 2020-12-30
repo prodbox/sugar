@@ -1,7 +1,7 @@
 package main
 
 import (
-	"sugar/cmd"
+	"github.com/prodbox/sugar/cmd"
 )
 
 func main() {

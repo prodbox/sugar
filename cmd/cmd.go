@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"sugar/cmd/app"
-	"sugar/cmd/app/create"
+	"github.com/prodbox/sugar/cmd/app"
+	"github.com/prodbox/sugar/cmd/app/create"
 )
 
 func init() {
