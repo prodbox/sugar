@@ -1,4 +1,4 @@
-module sugar
+module github.com/prodbox/sugar
 
 go 1.14
 
