@@ -3,6 +3,7 @@ package create
 import (
 	"fmt"
 	"github.com/prodbox/sugar/os/upath"
+	"path"
 
 	"github.com/urfave/cli/v2"
 )
@@ -21,6 +22,12 @@ func Before(ctx *cli.Context) error {
 }
 
 func Action(ctx *cli.Context) error {
-	fmt.Println(upath.ExecutableSourceRoot())
+	serverPath := path.Join(upath.ExecutableSourceRoot(), "server")
+	fmt.Println(serverPath)
+	if upath.IsExist(serverPath) == false {
+		if err := upath.Mkdir(serverPath); err != nil {
+			return err
+		}
+	}
 	return nil
 }

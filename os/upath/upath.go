@@ -1,25 +1,29 @@
 package upath
 
 import (
-	"fmt"
 	"os"
-	"path"
-	"path/filepath"
-	"runtime"
 )
 
-// ExecutableFolder 可执行文件路径
-func Executable() string {
-	path, err := os.Executable()
-	if err != nil {
-		return ""
-	}
-	return filepath.Dir(filepath.Clean(path))
+// IsExist
+func IsExist(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil || os.IsExist(err)
 }
 
-// ExecutableSourceFolder 可执行文件源码路径
-func ExecutableSourceRoot() string {
-	fmt.Println(filepath.Abs(filepath.Dir(os.Args[0])))
-	_, currentPath, _, _ := runtime.Caller(0)
-	return path.Dir(currentPath)
+// IsDir
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
+
+// Mkdir
+func Mkdir(path string) error {
+	err := os.MkdirAll(path, os.ModePerm)
+	if err != nil {
+		return err
+	}
+	return nil
 }
